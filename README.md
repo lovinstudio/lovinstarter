@@ -4,11 +4,11 @@
 
 <p align="center">
 <a href="#"><img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-yellow.svg?style=flat-square"/></a>
-<a href="https://github.com/lovinstudio/QuicklySpringboot/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/lovinstudio/QuicklySpringboot.svg?style=flat-square"/></a>
-<a href="https://github.com/lovinstudio/QuicklySpringboot/releases"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/lovinstudio/QuicklySpringboot/total.svg?style=flat-square"></a>
-<a href="https://github.com/lovinstudio/QuicklySpringboot/commits"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/lovinstudio/QuicklySpringboot.svg?style=flat-square"></a>
-<a href="https://github.com/lovinstudio/QuicklySpringboot/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lovinstudio/QuicklySpringboot.svg?style=flat-square"></a>
-<a href="https://travis-ci.org/lovinstudio/QuicklySpringboot"><img alt="Travis CI" src="https://img.shields.io/travis/lovinstudio/QuicklySpringboot.svg?style=flat-square"/></a>
+<a href="https://github.com/lovinstudio/lovinstarter/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/lovinstudio/lovinstarter.svg?style=flat-square"/></a>
+<a href="https://github.com/lovinstudio/lovinstarter/releases"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/lovinstudio/lovinstarter/total.svg?style=flat-square"></a>
+<a href="https://github.com/lovinstudio/lovinstarter/commits"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/lovinstudio/lovinstarter.svg?style=flat-square"></a>
+<a href="https://github.com/lovinstudio/lovinstarter/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lovinstudio/lovinstarter.svg?style=flat-square"></a>
+<a href="https://travis-ci.org/lovinstudio/lovinstarter"><img alt="Travis CI" src="https://img.shields.io/travis/lovinstudio/lovinstarter.svg?style=flat-square"/></a>
 </p>
 
 ------------------------------
