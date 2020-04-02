@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eelve</groupId>
-    <artifactId>springbootredis</artifactId>
+    <artifactId>lovinstarter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springbootredis</name>
+    <name>lovinstarter</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
