@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.utils;
+package com.eelve.lovinstarter.utils;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

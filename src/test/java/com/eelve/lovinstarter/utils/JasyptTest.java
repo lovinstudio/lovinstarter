@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.utils;
+package com.eelve.lovinstarter.utils;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.EnvironmentPBEConfig;

@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.config;
+package com.eelve.lovinstarter.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

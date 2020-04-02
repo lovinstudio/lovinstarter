@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.utils;
+package com.eelve.lovinstarter.utils;
 
 import javax.servlet.http.HttpServletRequest;
 

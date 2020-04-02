@@ -2,15 +2,15 @@ server:
   port: 8080
   servlet:
     context-path: /lovin
-logging:
-  config:
-    classpath:logback.xml
 spring:
   servlet:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
       enabled: true
+  logging:
+    config:
+      classpath:logback.xml
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/training?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: ENC(FIBMFUGC/3Ni8vE2PJ9VAA==)

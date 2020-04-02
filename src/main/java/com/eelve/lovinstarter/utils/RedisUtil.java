@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.utils;
+package com.eelve.lovinstarter.utils;
 
 import java.util.List;
 import java.util.Map;

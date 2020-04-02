@@ -1,4 +1,4 @@
-package com.eelve.springbootredis.model;
+package com.eelve.lovinstarter.model;
 
 import lombok.Data;
 
