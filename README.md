@@ -16,3 +16,6 @@
 ## 简介
 
 一个简单的常用的配置的工具类的封装，web项目框架。
+
+# License
+Released under the [MIT](LICENSE) License.
