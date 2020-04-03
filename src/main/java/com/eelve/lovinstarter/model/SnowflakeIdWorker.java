@@ -30,7 +30,7 @@ public class SnowflakeIdWorker {
      * 开始时间截 (2020-04-04)
      * 根据具体项目上线的时间进行修改即可
      */
-    private final long twepoch = 1567267200000L;
+    private final long twepoch = 1585929600L;
 
     /**
      * 机器id所占的位数
