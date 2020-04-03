@@ -35,6 +35,11 @@
         </encoder>
     </appender>
 
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
     <!-- 开发、测试环境 -->
     <springProfile name="dev,test">
         <root level="INFO">

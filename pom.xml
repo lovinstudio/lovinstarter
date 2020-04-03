@@ -111,12 +111,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-        <!-- kaptcha验证码的依赖 -->
-        <dependency>
-            <groupId>com.github.penggle</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>2.3.2</version>
-        </dependency>
         <!--使用MultipartHttpServletRequest上传文件所依赖的jar包 -->
         <dependency>
             <groupId>commons-fileupload</groupId>

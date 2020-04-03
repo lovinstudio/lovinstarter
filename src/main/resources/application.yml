@@ -96,7 +96,7 @@ spring:
       trigger-file: trigger.txt
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.eelve.springbootredis.model
+  type-aliases-package: com.eelve.lovinstarter.model
 
 #pagehelper
 pagehelper:
