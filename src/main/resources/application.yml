@@ -2,6 +2,11 @@ server:
   port: 8080
   servlet:
     context-path: /lovin
+  #雪花算法生成ID需配置字段
+  #工作机编号
+  workId: 0
+  #数据库编号
+  datacenterId: 0
 spring:
   servlet:
     multipart:

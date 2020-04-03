@@ -1,5 +1,6 @@
 package com.eelve.lovinstarter;
 
+import com.eelve.lovinstarter.utils.SnowflakeUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ public class LovinstarterApplicationTests {
 
     @Test
     public void contextLoads() {
+        System.out.println(SnowflakeUtil.nextId());
     }
 
 }
