@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LovinSpringbootApplication {
+public class LovinstarterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LovinSpringbootApplication.class, args);
+        SpringApplication.run(LovinstarterApplication.class, args);
     }
 
 }
