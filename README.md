@@ -17,5 +17,9 @@
 
 一个简单的常用的配置的工具类的封装，Spring Boot脚手架。
 
+集成Swagger2，访问地址：[http://localhost:8080/lovin/swagger-ui.html](http://localhost:8080/lovin/swagger-ui.html)
+
+集成druid，访问地址：[http://localhost:8080/lovin/druid/login.html](http://localhost:8080/lovin/druid/login.html)
+
 # License
 Released under the [MIT](LICENSE) License.
