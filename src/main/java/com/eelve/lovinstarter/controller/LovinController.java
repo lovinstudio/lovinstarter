@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
  * @Version 1.0
  **/
 @Controller
-@RequestMapping("/lovin")
 @Api(value = "Lovin基础的接口",tags = {"Lovin基础的接口的controller"})
 @Log
 public class LovinController {
@@ -29,5 +28,11 @@ public class LovinController {
     public JsonResult allInfos(HttpServletRequest request){
         log.info(JsonResult.ok().toString());
         return JsonResult.ok();
+    }
+
+    @RequestMapping("/index")
+    @ApiOperation(value = "首页",notes = "首页",httpMethod="GET")
+    public String index(HttpServletRequest request){
+        return "index";
     }
 }
