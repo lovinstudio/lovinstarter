@@ -1,5 +1,6 @@
 package com.eelve.lovinstarter.controller;
 
+import com.eelve.lovinstarter.annotation.LovinLog;
 import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Log
 public class LovinController {
 
+    @LovinLog("测试接口")
     @RequestMapping("/all")
     @ResponseBody
     @ApiOperation(value = "测试接口",notes = "测试接口",httpMethod="GET")
