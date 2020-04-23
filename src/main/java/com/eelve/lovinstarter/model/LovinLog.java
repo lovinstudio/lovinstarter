@@ -12,7 +12,7 @@ import java.util.Date;
  * @Version 1.0
  **/
 @Data
-public class LovinLogEntity {
+public class LovinLog {
 
     /**ID**/
     private Long id;

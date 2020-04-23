@@ -1,7 +1,6 @@
 package com.eelve.lovinstarter.aspect;
 
-import com.eelve.lovinstarter.annotation.LovinLog;
-import com.eelve.lovinstarter.model.LovinLogEntity;
+import com.eelve.lovinstarter.model.LovinLog;
 import com.eelve.lovinstarter.utils.HttpContextUtils;
 import com.eelve.lovinstarter.utils.IPUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -53,16 +52,16 @@ public class LovinLogAspect {
     private void saveSysLog(ProceedingJoinPoint joinPoint,Object result, long time) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        LovinLogEntity logEntity = new LovinLogEntity();
+        LovinLog logEntity = new LovinLog();
         //获取request
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
 
 
         String queryString = request.getQueryString();
-        //用户名
+        //用户信息后面将从token中获取
         logEntity.setUsername("seven");
         logEntity.setUserId("7");
-        LovinLog logAnnotation = method.getAnnotation(LovinLog.class);
+        com.eelve.lovinstarter.annotation.LovinLog logAnnotation = method.getAnnotation(com.eelve.lovinstarter.annotation.LovinLog.class);
         //注解上的描述
         logEntity.setOperation(logAnnotation.value());
         logEntity.setType(logAnnotation.type());
@@ -104,6 +103,7 @@ public class LovinLogAspect {
             logEntity.setTime(time);
             logEntity.setCreateTime(new Date());
             logEntity.setResult(result.toString());
+            //这里还可以将结果入库
             log.info(logEntity.toString());
         }
     }
