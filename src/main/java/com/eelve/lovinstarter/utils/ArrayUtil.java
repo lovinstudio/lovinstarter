@@ -44,8 +44,9 @@ public class ArrayUtil {
      * */
     public static boolean useLoop(String[] arr,String targetValue){
         for(String s:arr){
-            if(s.equals(targetValue))
+            if(s.equals(targetValue)) {
                 return true;
+            }
         }
         return false;
     }
