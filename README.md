@@ -21,5 +21,29 @@
 
 集成druid，访问地址：[http://localhost:8080/lovin/druid/login.html](http://localhost:8080/lovin/druid/login.html)
 
+
+## 动态刷新配置
+
+访问[http://localhost:8080/lovin/config](http://localhost:8080/lovin/config)查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/refresh](http://localhost:8080/lovin/refresh)刷新配置即可加载最新的配置。下面给出表结构
+
+```sql
+DROP TABLE IF EXISTS `system_dict`;
+CREATE TABLE `system_dict`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键，唯一标识',
+  `dict_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典名称',
+  `dict_key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典KEY',
+  `dict_value` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典VALUE',
+  `dict_type` int(11) NOT NULL DEFAULT 0 COMMENT '字典类型 0系统配置 1用户配置',
+  `dict_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '字典描述',
+  `status` int(4) NOT NULL DEFAULT 1 COMMENT '字典状态：0-停用 1-正常',
+  `delete_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否删除：0-未删除 1-已删除',
+  `operator` int(11) NOT NULL COMMENT '操作人ID，关联用户域用户表ID',
+  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `delete_time` datetime(0) NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置字典表' ROW_FORMAT = Dynamic;
+```
+
 # License
 Released under the [MIT](LICENSE) License.
