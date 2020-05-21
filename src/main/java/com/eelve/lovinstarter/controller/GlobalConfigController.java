@@ -2,17 +2,16 @@ package com.eelve.lovinstarter.controller;
 
 import com.eelve.lovinstarter.annotation.LovinLog;
 import com.eelve.lovinstarter.config.GlobalConfig;
+import com.eelve.lovinstarter.constant.RemoteHostType;
 import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Vector;
 
 /**
  * @ClassName GlobalConfigController
@@ -41,8 +40,10 @@ public class GlobalConfigController {
     @RequestMapping("/refresh")
     @ResponseBody
     @ApiOperation(value = "更新应用配置接口",notes = "更新应用配置接口",httpMethod="GET")
-    public JsonResult refreshProperties() {
-
+    public JsonResult refreshProperties(HttpServletRequest request) {
+        if(!request.getRemoteHost().equals(RemoteHostType.LOCALHOST)){
+            return JsonResult.error("非法请求");
+        }
         GlobalConfig globalConfig =  GlobalConfig.getInstance();
         globalConfig.updateProperties();
         log.info(JsonResult.ok().put(globalConfig.getProperties()).toString());
