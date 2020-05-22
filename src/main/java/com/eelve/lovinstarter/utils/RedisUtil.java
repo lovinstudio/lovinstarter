@@ -153,6 +153,24 @@ public class RedisUtil {
     }
 
     /**
+     *
+     * 递增
+     *
+     * @param key   键
+     * @param delta 要增加几(大于0),同时初始化过期时间
+     * @return
+     *
+     */
+    public long incr(String key, long delta,long time) {
+        if (delta < 0) {
+            throw new RuntimeException("递增因子必须大于0");
+        }
+        long x = redisTemplate.opsForValue().increment(key, delta);
+        expire(key, time);
+        return x;
+    }
+
+    /**
      * 递减
      *
      * @param key   键
