@@ -11,4 +11,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RepeatSubmitCheck {
+    //默认2秒内不能重复提交
+    long value() default 2L;
 }

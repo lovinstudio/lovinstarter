@@ -11,12 +11,14 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
 
 /**
  * @ClassName RepeatSubmitAspect
@@ -35,7 +37,6 @@ public class RepeatSubmitAspect {
 
     private static Md5Utils md5Utils = new Md5Utils();
 
-    private static final long time = 5;//5秒内不得重复调用
 
     @Pointcut("@annotation(repeatSubmitCheck)")
     public void requestPointcut(RepeatSubmitCheck repeatSubmitCheck) {
@@ -43,10 +44,16 @@ public class RepeatSubmitAspect {
 
     @Before("requestPointcut(repeatSubmitCheck)")
     public void beforeCheck(JoinPoint joinPoint, RepeatSubmitCheck repeatSubmitCheck) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        RepeatSubmitCheck repeatSubmit = method.getAnnotation(RepeatSubmitCheck.class);
+        long time = repeatSubmit.value();
+
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         HttpServletRequest request = httpServletRequest();
+
 
         if(request!=null){
             String token = UserTokenUtil.getRequestToken(request);
