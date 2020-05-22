@@ -60,7 +60,7 @@ public class GlobalConfig {
     private ConcurrentHashMap<String ,Object> convert() {
         ConcurrentHashMap<String ,Object> convert = new ConcurrentHashMap<>();
         Vector<SystemDict> systemDictVector = bean.getConfig();
-        Class clazz = null;
+        Class<?> clazz = null;
         try {
             clazz = Class.forName("com.eelve.lovinstarter.constant.ConfigConstants");
         } catch (ClassNotFoundException e) {

@@ -27,6 +27,28 @@
 访问[http://localhost:8080/lovin/config](http://localhost:8080/lovin/config)查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/refresh](http://localhost:8080/lovin/refresh)刷新配置即可加载最新的配置。下面给出表结构
 
 ```sql
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 50721
+ Source Host           : localhost:3306
+ Source Schema         : training
+
+ Target Server Type    : MySQL
+ Target Server Version : 50721
+ File Encoding         : 65001
+
+ Date: 22/05/2020 22:59:24
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for system_dict
+-- ----------------------------
 DROP TABLE IF EXISTS `system_dict`;
 CREATE TABLE `system_dict`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键，唯一标识',
@@ -43,6 +65,15 @@ CREATE TABLE `system_dict`  (
   `delete_time` datetime(0) NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置字典表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of system_dict
+-- ----------------------------
+INSERT INTO `system_dict` VALUES (1, '应用ID', 'appid', 'eelve', 0, '应用ID', 1, 0, 17, '2020-05-09 11:14:00', '2020-05-09 11:14:00', '1970-01-01 00:00:00');
+INSERT INTO `system_dict` VALUES (2, '密钥', 'key', 'eelve', 0, '密钥', 1, 0, 17, '2020-05-09 11:14:39', '2020-05-09 11:14:39', '1970-01-01 00:00:00');
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 ```
 
 # License
