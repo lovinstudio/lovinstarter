@@ -3,15 +3,21 @@ package com.eelve.lovinstarter.controller;
 import com.eelve.lovinstarter.annotation.LovinLog;
 import com.eelve.lovinstarter.config.GlobalConfig;
 import com.eelve.lovinstarter.constant.RemoteHostType;
+import com.eelve.lovinstarter.model.SystemDict;
+import com.eelve.lovinstarter.service.IGlobalConfigService;
 import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @ClassName GlobalConfigController
@@ -24,6 +30,17 @@ import javax.servlet.http.HttpServletRequest;
 @Api(value = "Lovin应用配置接口",tags = {"Lovin应用配置接口的controller"})
 @Log
 public class GlobalConfigController {
+
+    @Autowired
+    IGlobalConfigService iGlobalConfigService;
+
+    @RequestMapping("/")
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") Integer page,
+                       @RequestParam(value = "size", defaultValue = "6") Integer size) {
+        List<SystemDict> dicts=iGlobalConfigService.getConfig();
+        model.addAttribute("dicts", dicts);
+        return "config";
+    }
 
     @LovinLog("获取应用配置接口")
     @RequestMapping("/config")
