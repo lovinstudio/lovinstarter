@@ -9,9 +9,11 @@ import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,16 +56,24 @@ public class GlobalConfigController {
 
 
     @LovinLog("更新应用配置接口")
-    @RequestMapping("/refresh")
+    @PostMapping("/refresh")
     @ResponseBody
-    @ApiOperation(value = "更新应用配置接口",notes = "更新应用配置接口",httpMethod="GET")
-    public JsonResult refreshProperties(HttpServletRequest request) {
-        if(!request.getRemoteHost().equals(RemoteHostType.LOCALHOST)){
+    @ApiOperation(value = "更新应用配置接口",notes = "更新应用配置接口",httpMethod="POST")
+    public JsonResult refreshProperties(HttpServletRequest request,@RequestParam(name = "dictid") String id,@RequestParam(name = "updateValue") String updateValue) {
+        if(!request.getRemoteHost().equals(RemoteHostType.LOCALHOST) && !request.getRemoteHost().equals(RemoteHostType.LOCALADDR)){
+            log.info(JsonResult.error("非法请求").toString());
             return JsonResult.error("非法请求");
         }
-        GlobalConfig globalConfig =  GlobalConfig.getInstance();
-        globalConfig.updateProperties();
-        log.info(JsonResult.ok().put(globalConfig.getProperties()).toString());
-        return  JsonResult.ok().put(globalConfig.getProperties());
+        int total = iGlobalConfigService.updateSystemDict(Integer.parseInt(id), updateValue);
+        if(total > 0){
+            GlobalConfig globalConfig =  GlobalConfig.getInstance();
+            globalConfig.updateProperties();
+            log.info(JsonResult.ok().put(globalConfig.getProperties()).toString());
+            return  JsonResult.ok().put(globalConfig.getProperties());
+        }else{
+            log.info(JsonResult.error("请求失败，请稍后重试").toString());
+            return JsonResult.error("请求失败，请稍后重试");
+        }
+
     }
 }

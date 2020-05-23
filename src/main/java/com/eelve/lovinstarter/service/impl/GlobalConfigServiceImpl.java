@@ -26,4 +26,9 @@ public class GlobalConfigServiceImpl implements IGlobalConfigService {
     public Vector<SystemDict> getConfig() {
         return globalConfigDao.getConfig();
     }
+
+    @Override
+    public int updateSystemDict(int id, String dict_value) {
+        return globalConfigDao.updateSystemDict(id,dict_value);
+    }
 }

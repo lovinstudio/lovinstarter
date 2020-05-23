@@ -13,4 +13,6 @@ import java.util.Vector;
 public interface IGlobalConfigService {
 
     Vector<SystemDict> getConfig();
+
+    int updateSystemDict(int id,String dict_value);
 }

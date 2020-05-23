@@ -7,4 +7,5 @@ package com.eelve.lovinstarter.constant;
  */
 public interface RemoteHostType {
     String LOCALHOST = "0:0:0:0:0:0:0:1";
+    String LOCALADDR = "127.0.0.1";
 }
