@@ -13,7 +13,6 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>id</th>
             <th>dict_name</th>
             <th>dict_key</th>
             <th>dict_value</th>
@@ -31,7 +30,6 @@
         <tbody>
         <tr  th:each="dict,thisdict : ${dicts}">
             <th scope="row" th:text="${thisdict.count}"></th>
-            <td th:text="${dict.id}"></td>
             <td th:text="${dict.dict_name}"></td>
             <td th:text="${dict.dict_key}"></td>
             <td th:text="${dict.dict_value}"></td>
@@ -43,7 +41,7 @@
             <td th:text="${#dates.format(dict.create_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${#dates.format(dict.update_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${#dates.format(dict.delete_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td><button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#settingModal">修改</button></td>
+            <td><button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#settingModal" th:onclick="'javascript:goToUpdate(\''+${dict.id}+'\');'">修改</button></td>
         </tr>
         </tbody>
     </table>
@@ -57,16 +55,17 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" href="#">
+                        <input type="hidden" class="form-control" id="dictid">
                         <div class="form-group">
                             <label for="appid" class="col-sm-2 control-label">AppId</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="appid" placeholder="AppId">
+                                <input type="email" class="form-control" id="appid" placeholder="new AppId">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="key" class="col-sm-2 control-label">Key</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="key" placeholder="Key">
+                                <input type="password" class="form-control" id="key" placeholder="new Key">
                             </div>
                         </div>
                     </form>
@@ -83,17 +82,29 @@
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript">
     $(function () {
-            function centerModals() {
-                $('#settingModal').each(function (i) {
-                    var $clone = $(this).clone().css('display', 'block').appendTo('body');
-                    var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
-                    top = top > 0 ? top : 0;
-                    $clone.remove();
-                    $(this).find('.modal-content').css("margin-top", top);
-                });
-            };
+        function centerModals() {
+            $('#settingModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
 
-            $('#settingModal').on('show.bs.modal', centerModals);
+        $('#settingModal').on('show.bs.modal', centerModals);
+    });
+    //模态框赋初始值
+    function goToUpdate(id){
+        $('#dictid').val(id);
+    };
+
+    //修改方法
+    $('#confirm').click(function () {
+        var dictid = $('#dictid').val();
+        var appid = $('#appid').val();
+        var key = $('#key').val();
+        console.log(dictid +'----'+appid + '' + key);
     });
 </script>
 </body>
