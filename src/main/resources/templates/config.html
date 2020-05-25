@@ -108,8 +108,12 @@
                 dataType: "json",
                 success: function(data){
                     console.log(data);
-                    $('#settingModal').modal('hide');
-                    window.location.reload();
+                    if(data.code == 0){
+                        $('#settingModal').modal('hide');
+                        window.location.reload();
+                    }else {
+                        alert(data.msg);
+                    }
                 },
                 error: function(xhr, type, errorThrown) {
                     //异常处理；
