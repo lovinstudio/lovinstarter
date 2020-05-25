@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -20,6 +21,6 @@ public interface GlobalConfigDao {
     @Select("select * from system_dict")
     Vector<SystemDict> getConfig();
 
-    @Update("update system_dict set dict_value = #{dict_value} where id = #{id}")
-    int updateSystemDict(int id,String dict_value);
+    @Update("update system_dict set dict_value = #{dict_value},update_time = #{updateTime} where id = #{id}")
+    int updateSystemDict(int id, String dict_value, Date updateTime);
 }

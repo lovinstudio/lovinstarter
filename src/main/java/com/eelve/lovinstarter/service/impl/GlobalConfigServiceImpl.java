@@ -6,6 +6,7 @@ import com.eelve.lovinstarter.service.IGlobalConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,6 +30,7 @@ public class GlobalConfigServiceImpl implements IGlobalConfigService {
 
     @Override
     public int updateSystemDict(int id, String dict_value) {
-        return globalConfigDao.updateSystemDict(id,dict_value);
+        Date updateTime = new Date();
+        return globalConfigDao.updateSystemDict(id,dict_value,updateTime);
     }
 }
