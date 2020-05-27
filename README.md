@@ -24,7 +24,7 @@
 
 ## 动态刷新配置
 
-访问[http://localhost:8080/lovin/config](http://localhost:8080/lovin/config)查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/refresh](http://localhost:8080/lovin/refresh)刷新配置即可加载最新的配置。下面给出表结构
+访问[http://localhost:8080/lovin/config](http://localhost:8080/lovin/config)查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/](http://localhost:8080/lovin/)打开配置页面，刷新配置即可加载最新的配置。下面给出表结构
 
 ```sql
 /*
