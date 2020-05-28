@@ -99,7 +99,7 @@
         var updateValue = $('#updateValue').val();
         if(updateValue != null && updateValue != ''){
             $.ajax({
-                url:"../lovin/refresh",
+                url:"/lovin/config/refresh",
                 type: "POST",
                 data: {
                     dictid: dictid,

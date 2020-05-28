@@ -39,6 +39,7 @@ public class GlobalConfigController {
                        @RequestParam(value = "size", defaultValue = "6") Integer size) {
         List<SystemDict> dicts=iGlobalConfigService.getConfig();
         model.addAttribute("dicts", dicts);
+        log.info(JsonResult.ok().put(dicts).toString());
         return "config";
     }
 
