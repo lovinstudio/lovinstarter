@@ -1,8 +1,6 @@
 package com.eelve.lovinstarter.config;
 
 
-
-import com.eelve.lovinstarter.constant.ConfigConstants;
 import com.eelve.lovinstarter.model.SystemDict;
 import com.eelve.lovinstarter.service.IGlobalConfigService;
 import com.eelve.lovinstarter.utils.SpringUtils;

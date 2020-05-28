@@ -5,9 +5,9 @@ import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date 2020/04/08 21:36
  * @Version 1.0
  **/
-@Controller
+@RestController
 @Api(value = "Lovin基础的接口",tags = {"Lovin基础的接口的controller"})
 @Log
 public class LovinController {

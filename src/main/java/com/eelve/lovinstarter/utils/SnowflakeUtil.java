@@ -1,11 +1,6 @@
 package com.eelve.lovinstarter.utils;
 
 import com.eelve.lovinstarter.component.SnowflakeComponent;
-import com.eelve.lovinstarter.model.SnowflakeIdWorker;
-import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
 /**
  * @ClassName SnowflakeUtil

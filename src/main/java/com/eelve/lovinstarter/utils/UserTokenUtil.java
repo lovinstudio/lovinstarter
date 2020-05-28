@@ -1,7 +1,6 @@
 package com.eelve.lovinstarter.utils;
 
 import org.apache.commons.lang.StringUtils;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**

@@ -9,14 +9,9 @@ import com.eelve.lovinstarter.vo.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -28,7 +23,7 @@ import java.util.List;
  * @Date 2020/5/9 11:32
  * @Version 1.0
  **/
-@Controller
+@RestController("/config")
 @Api(value = "Lovin应用配置接口",tags = {"Lovin应用配置接口的controller"})
 @Log
 public class GlobalConfigController {
@@ -45,7 +40,7 @@ public class GlobalConfigController {
     }
 
     @LovinLog("获取应用配置接口")
-    @RequestMapping("/config")
+    @GetMapping("/config")
     @ResponseBody
     @ApiOperation(value = "获取应用配置接口",notes = "获取应用配置接口",httpMethod="GET")
     public JsonResult allConfigs(HttpServletRequest request){
