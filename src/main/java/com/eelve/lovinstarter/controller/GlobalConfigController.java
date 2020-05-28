@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,8 @@ import java.util.List;
  * @Date 2020/5/9 11:32
  * @Version 1.0
  **/
-@RestController("/config")
+@Controller
+@RequestMapping("/config")
 @Api(value = "Lovin应用配置接口",tags = {"Lovin应用配置接口的controller"})
 @Log
 public class GlobalConfigController {
@@ -31,7 +33,8 @@ public class GlobalConfigController {
     @Autowired
     IGlobalConfigService iGlobalConfigService;
 
-    @RequestMapping("/")
+    @GetMapping("/index")
+    @ApiOperation(value = "应用配置页面",notes = "应用配置页面",httpMethod="GET")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "0") Integer page,
                        @RequestParam(value = "size", defaultValue = "6") Integer size) {
         List<SystemDict> dicts=iGlobalConfigService.getConfig();

@@ -17,14 +17,21 @@
 
 一个简单的常用的配置的工具类的封装，Spring Boot脚手架。
 
+欢迎访问[首页](http://localhost:8080/lovin/)
+![首页](./images/index.png)
+
 集成Swagger2，访问地址：[http://localhost:8080/lovin/swagger-ui.html](http://localhost:8080/lovin/swagger-ui.html)
+![Swagger2](./images/swagger.png)
 
 集成druid，访问地址：[http://localhost:8080/lovin/druid/login.html](http://localhost:8080/lovin/druid/login.html)
-
+![druid](./images/druid.png)
 
 ## 动态刷新配置
 
-访问[http://localhost:8080/lovin/config](http://localhost:8080/lovin/config)查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/](http://localhost:8080/lovin/)打开配置页面，刷新配置即可加载最新的配置。下面给出表结构
+访问[http://localhost:8080/lovin/config/config](http://localhost:8080/lovin/config/config) 查看当前生效的配置，当需要更改某些配置的时候，在数据库修改配置，然后访问[http://localhost:8080/lovin/config/index](http://localhost:8080/lovin/config/index) 打开配置页面，刷新配置即可加载最新的配置。
+![config](./images/config.png)
+
+下面给出表结构
 
 ```sql
 /*
