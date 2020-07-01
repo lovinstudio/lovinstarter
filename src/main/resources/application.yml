@@ -8,6 +8,8 @@ server:
   #数据库编号
   datacenterId: 0
 spring:
+  mvc:
+    static-path-pattern: /static/**
   servlet:
     multipart:
       max-file-size: 100MB
