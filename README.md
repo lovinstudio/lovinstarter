@@ -83,5 +83,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ```
 
+## 添加全局错误页面配置
+
+
 # License
 Released under the [MIT](LICENSE) License.
