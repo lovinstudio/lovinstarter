@@ -19,7 +19,7 @@ spring:
     config:
       classpath:logback.xml
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/training?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/lovin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: ENC(FIBMFUGC/3Ni8vE2PJ9VAA==)
     password: ENC(FIBMFUGC/3Ni8vE2PJ9VAA==)
     type: com.alibaba.druid.pool.DruidDataSource
@@ -43,7 +43,16 @@ spring:
       pool-prepared-statements: true
       #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
       max-pool-prepared-statement-per-connection-size: 20
-      filters: stat,wall
+      filter:
+        stat:
+          enabled: true
+        slf4j:
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            comment-allow: true
+      #filters: stat,wall
       use-global-data-source-stat: true
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
@@ -62,6 +71,16 @@ spring:
         url-pattern: /*
         # 忽略过滤格式
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+  flyway:
+    enabled: true
+    # 禁止清理数据库表
+    clean-disabled: true
+    # 如果数据库不是空表，需要设置成 true，否则启动报错
+    baseline-on-migrate: true
+    # 与 baseline-on-migrate: true 搭配使用
+    baseline-version: 0
+    locations:
+      - classpath:db/migration  #（根据个人情况设置）
   redis:
     database: 0
     host: 127.0.0.1

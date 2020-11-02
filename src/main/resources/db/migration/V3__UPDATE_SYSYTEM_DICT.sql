@@ -1,0 +1,2 @@
+INSERT INTO lovin.system_dict (id, dict_name, dict_key, dict_value, dict_type, dict_desc, status, delete_flag, operator, create_time, update_time, delete_time) VALUES (1, '应用ID', 'appid', 'eelve', 0, '应用ID', 1, 0, 17, '2020-05-09 11:14:00', '2020-05-28 16:24:45', '1970-01-01 00:00:00');
+INSERT INTO lovin.system_dict (id, dict_name, dict_key, dict_value, dict_type, dict_desc, status, delete_flag, operator, create_time, update_time, delete_time) VALUES (2, '密钥', 'key', 'eelve', 0, '密钥', 1, 0, 17, '2020-05-09 11:14:39', '2020-05-28 16:23:24', '1970-01-01 00:00:00');
