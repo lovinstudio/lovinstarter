@@ -86,5 +86,82 @@ SET FOREIGN_KEY_CHECKS = 1;
 ## 添加全局错误页面配置
 
 
+## Flyway集成
+
+~~~xml
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+</dependency>
+~~~
+
+> 与`druid`集成，注意`filters: stat,wall`过滤器的配置，不然会导致报错
+
+~~~yaml
+spring:
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/lovin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      username: ENC(FIBMFUGC/3Ni8vE2PJ9VAA==)
+      password: ENC(FIBMFUGC/3Ni8vE2PJ9VAA==)
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        # 下面为连接池的补充设置，应用到上面所有数据源中
+        # 初始化大小，最小，最大
+        initial-size: 5
+        min-idle: 5
+        max-active: 20
+        # 配置获取连接等待超时的时间
+        max-wait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        time-between-eviction-runs-millis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        validation-query: SELECT 1 FROM DUAL
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        max-pool-prepared-statement-per-connection-size: 20
+        filter:
+          stat:
+            enabled: true
+          slf4j:
+            enabled: true
+          wall:
+            enabled: true
+            config:
+              comment-allow: true
+        #filters: stat,wall
+        use-global-data-source-stat: true
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        # 配置监控服务器
+        stat-view-servlet:
+          login-username: admin
+          login-password: 123456
+          reset-enable: false
+          url-pattern: /druid/*
+          # 添加IP白名单
+          #allow:
+          # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
+          #deny:
+        web-stat-filter:
+          # 添加过滤规则
+          url-pattern: /*
+          # 忽略过滤格式
+          exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+    flyway:
+      enabled: true
+      # 禁止清理数据库表
+      clean-disabled: true
+      # 如果数据库不是空表，需要设置成 true，否则启动报错
+      baseline-on-migrate: true
+      # 与 baseline-on-migrate: true 搭配使用
+      baseline-version: 0
+      locations:
+        - classpath:db/migration  #（根据个人情况设置）
+~~~
 # License
 Released under the [MIT](LICENSE) License.
