@@ -30,7 +30,7 @@ import java.util.concurrent.ConcurrentMap;
 public class MyRateLimiterAspect {
     private static final ConcurrentMap<String, RateLimiter> RATE_LIMITER_CACHE = new ConcurrentHashMap<>();
 
-    @Pointcut("@annotation(com.eelve.limiting.guava.annotation.MyRateLimiter)")
+    @Pointcut("@annotation(com.eelve.lovinstarter.annotation.MyRateLimiter)")
     public void MyRateLimit() {
 
     }
